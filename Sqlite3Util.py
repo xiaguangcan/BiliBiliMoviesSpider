@@ -37,9 +37,9 @@ def insert_bili_movies(movies_info):
 def update_bili_movies(movies_info):
     db_connect = get_db_connect()
     db_connect.text_factory = str
-    parameter = (movies_info.bili_movies_name, movies_info.bili_movies_url, movies_info.bili_movies_des,
-                 movies_info.bili_movies_play_num,
-                 movies_info.bili_movies_img, movies_info.bili_movies_category)
+    parameter = (movies_info.bili_movies_name, movies_info.bili_movies_des, movies_info.bili_movies_play_num,
+                 movies_info.bili_movies_img,
+                 movies_info.bili_movies_category, movies_info.bili_movies_url)
     db_connect.execute(
         'UPDATE bili_movies SET bili_movies_name=?,bili_movies_des=?,bili_movies_play_num=?,bili_movies_img=?, bili_movies_category=? WHERE bili_movies_url=?;',
         parameter)

@@ -52,7 +52,9 @@ class BiliBiliSpider:
                 driver_left_movie_path_name = item.find_element_by_xpath('./div[@class="l-l"]/a[last()]')
                 movie_url = driver_left_movie_path_name.get_attribute('href')
                 driver_left_movie_img = item.find_element_by_xpath('./div[@class="l-l"]/a[1]//img')
-                left_movie_img_url = driver_left_movie_img.get_attribute('src')
+                left_movie_img_url = driver_left_movie_img.get_attribute('data-img')
+                if left_movie_img_url is None or len(left_movie_img_url) <= 0:
+                    left_movie_img_url = driver_left_movie_img.get_attribute('src')
                 if movie_url is not None:
                     movie_name = driver_left_movie_path_name.text
                     driver_right_movie_desc = item.find_element_by_xpath('./div[@class="l-r"]/div[@class="v-desc"]')
@@ -61,7 +63,7 @@ class BiliBiliSpider:
                         './div[@class="l-r"]/div[@class="v-info"]/span[@class="v-info-i gk"]/span')
                     right_movie_play_num = driver_right_movie_play.text
                     movies_info = MoviesInfo(movie_name, movie_url, right_movie_desc, right_movie_play_num,
-                                             left_movie_img_url,category)
+                                             left_movie_img_url, category)
                     movies_list.append(movies_info)
             except Exception:
                 print movie_url
