@@ -1,0 +1,12 @@
+.gradle
+/gradle
+/build
+/local.properties
+/build
+.idea
+*.iml
+.DS_Store
+Polaris/proguard-mapping.txt
+Polaris/BuglyUploadLog.txt
+*.log
+*.pyc
