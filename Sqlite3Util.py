@@ -8,11 +8,12 @@ spiders_connect = None
 def get_db_connect():
     global spiders_connect
 
-    if not os.path.exists(os.path.dirname(os.path.abspath("__file__")) + '\db'):
-        os.makedirs('db')
+    if not os.path.exists(os.path.dirname(os.path.abspath("__file__")) + os.sep + 'db'):
+        os.makedirs(os.path.dirname(os.path.abspath("__file__")) + os.sep + 'db')
 
     if spiders_connect is None:
-        spiders_connect = sqlite3.connect(os.path.dirname(os.path.abspath("__file__")) + '\db\spiders.db')
+        spiders_connect = sqlite3.connect(
+            os.path.dirname(os.path.abspath("__file__")) + os.sep + 'db' + os.sep + 'spiders.db')
     return spiders_connect
 
 
